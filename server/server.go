@@ -163,7 +163,7 @@ func (p *Parser) getMethods() []string {
 	return []string{}
 }
 
-func newParser(opts ...Option) *Parser {
+func NewParser(opts ...Option) *Parser {
 	var c = newDefaultConfig()
 	c.apply(opts...)
 	return &Parser{
@@ -184,7 +184,7 @@ func newDefaultConfig() *config {
 }
 
 func New(opts ...Option) fiber.Handler {
-	parser := newParser(opts...)
+	parser := NewParser(opts...)
 	return func(ctx *fiber.Ctx) error {
 		var (
 			token   = parser.GetToken(ctx)
